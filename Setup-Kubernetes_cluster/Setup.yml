@@ -20,7 +20,16 @@
         dest: /home/
         owner: root
         group: root
-        mode: 0644
+        mode: 0755
+
+    - name: Copying module to Nodes
+      become: true 
+      copy:
+        src: module
+        dest: /home/
+        owner: root
+        group: root
+        mode: 0755
 
     - name: Run setup script
       become: true
