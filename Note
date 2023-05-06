@@ -46,9 +46,10 @@ ssh-keygen
 
 #then copy to node
 ssh-copy-id username@nodeip
+ssh-copy-id tringuyen@172.16.1.95
 
 #test connection - remote to node
-ssh tringuyen@192.168.9.59
+ssh tringuyen@172.16.1.95
 
 #Disable password authentication
 sudo nano /etc/ssh/sshd_config
@@ -58,13 +59,13 @@ ChallengeResponseAuthentication no
 UsePAM no
 
 *************************************************************************************************************************** Installing Ansible
-sudo apt-add-repository ppa:ansible/ansible
-sudo apt update && sudo apt install -y ansible
+sudo apt-add-repository --yes ppa:ansible/ansible && sudo apt update && sudo apt install -y ansible
+
 sudo apt install -y ansible
 *
 sudo nano /etc/ansible/hosts
 [Nodes]
-Node01 ansible_host=172.16.5.249 ansible_port=22 ansible_user=root
+Node01 ansible_host=172.16.1.95 ansible_port=22 ansible_user=tringuyen
 Node02 ansible_host=172.16.5.214 ansible_port=22 ansible_user=root
 192.168.9.59
 192.168.9.59 ansible_ssh_pass=123 ansible_ssh_user=tringuyen #less secure
@@ -102,4 +103,4 @@ ansible Nodes -m command -a "ip ad"
 ansible Nodes -m command -a "service apache2 status"
 
 ansible-playbook playbook.yml -l server1 -u root -k #start setup playbook.yml to nodes
-ansible-playbook playbook.yml -l Nodes --become --ask-become-pass
+ansible-playbook Setup.yml -l Nodes --become --ask-become-pass
