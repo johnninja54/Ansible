@@ -46,10 +46,10 @@ ssh-keygen
 
 #then copy to node
 ssh-copy-id username@nodeip
-ssh-copy-id tringuyen@172.16.1.95
+ssh-copy-id tringuyen@192.168.9.57
 
 #test connection - remote to node
-ssh tringuyen@172.16.1.95
+ssh tringuyen@192.168.9.57
 
 #Disable password authentication
 sudo nano /etc/ssh/sshd_config

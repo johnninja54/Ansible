@@ -2,19 +2,19 @@
 hostname=$(hostname -s)
 user=$(whoami)
 
-cat <<- _EOF_ | sudo tee /etc/modules-load.d/modules.conf
+cat <<- 'EOF' | sudo tee /etc/modules-load.d/modules.conf
 overlay
 br_netfilter
-_EOF_
+EOF
 
 cmd=$(modprobe overlay)
 cmd=$(modprobe br_netfilter)
 
-cat <<- _EOF_ | sudo tee /etc/sysctl.d/k8s.conf
+cat << 'EOF' | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
-_EOF_
+EOF
 
 cmd=$(sysctl --system)
 
@@ -31,11 +31,11 @@ cmd=$(apt-get install -y containerd.io)
 cmd=$(sed -i 's/disabled_plugins/#disabled_plugins/g' /etc/containerd/config.toml)
 
 #edit containerd configuration
-cat <<- _EOF_ | tee /etc/containerd/config.toml
+cat <<- 'EOF' | tee /etc/containerd/config.toml
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
     SystemdCgroup = true
-_EOF_
+EOF
 
 cmd=$(systemctl restart containerd)
 cmd=$(systemctl enable containerd)
