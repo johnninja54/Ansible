@@ -1,6 +1,6 @@
 #!/bin/bash
 cmd=$(swapoff -a)
-cmd=$(sed -i '/ swap / s/^(.*)$/#1/g' /etc/fstab)
+cmd=$(systemctl mask swap.target)
 cmd=$(apt-get update)
 cmd=$(apt-get install -y apt-transport-https ca-certificates curl)
 cmd=$(mkdir -m 0755 -p /etc/apt/keyrings)

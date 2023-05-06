@@ -51,7 +51,7 @@ systemctl enable containerd
 
 #option1
 swapoff -a
-sed -i '/ swap / s/^(.*)$/#1/g' /etc/fstab #for fstab /etc/fstab
+systemctl mask swap.target
 apt-get update
 apt-get install -y apt-transport-https ca-certificates curl
 mkdir -m 0755 -p /etc/apt/keyrings
