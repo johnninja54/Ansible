@@ -3,7 +3,7 @@ controlip=$(hostname -I)
 pod_cidr="192.168.0.0/16"
 service_cidr="172.17.1.0/18"
 user="tringuyen"
-Node01="192.168.9.57"
+Node01="192.168.88.129"
 
 cat <<EOF | tee /etc/ansible/hosts
 [Nodes]
