@@ -105,4 +105,5 @@ ansible-playbook Setup.yml -l Nodes --become --ask-become-pass
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml -O
 kubectl apply -f calico.yaml
 sleep 10
+kubectl apply -f ./script/testwebserver.yml
 kubectl get nodes -o wide
