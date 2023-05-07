@@ -74,7 +74,7 @@ chmod +x ./kubectl
 mv ./kubectl /usr/local/bin/kubectl
 
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
+apt-get install -y kubelet=1.26.1-00 kubeadm=1.26.1-00 kubectl=1.26.1-00
 systemctl enable kubelet
 
 #Setup MasterNode

@@ -10,6 +10,6 @@ cmd=$(curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl
 cmd=$(chmod +x ./kubectl)
 cmd=$(mv ./kubectl /usr/local/bin/kubectl)
 cmd=$(apt-get update)
-cmd=$(apt-get install -y kubelet kubeadm kubectl)
+cmd=$(apt-get install -y kubelet=1.26.1-00 kubeadm=1.26.1-00 kubectl=1.26.1-00)
 cmd=$(systemctl enable kubelet)
 cmd=$(bash /home/script/join.sh)
