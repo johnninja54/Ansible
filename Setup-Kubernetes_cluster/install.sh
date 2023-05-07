@@ -96,7 +96,7 @@ cp -i /etc/kubernetes/admin.conf /home/$user/.kube/config
 chown $user:$user /home/$user/.kube/config
 
 #Run Ansible
-#ansible-playbook Setup.yml -l Nodes --become --ask-become-pass
+ansible-playbook Setup.yml -l Nodes --become --ask-become-pass
 
 #install Calico CNI
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/calico.yaml -O
